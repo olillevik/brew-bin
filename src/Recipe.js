@@ -11,10 +11,11 @@ class Recipe extends Component {
     }
 
     saveTitle = () => {
-        Firebase.firestore().collection("recipeNames")
+        Firebase.firestore().collection("recipes")
             .add({
                 name: this.state.name,
-                description: "No description"
+                description: "No description",
+                author_id: Firebase.auth().currentUser.uid
             })
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
