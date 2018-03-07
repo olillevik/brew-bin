@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import Recipe from './Recipe';
-import Recipes from './Recipes';
+import RecipeContainer from './RecipeContainer';
+import RecipesContainer from './RecipesContainer';
 
 
 class App extends Component {
@@ -10,10 +10,10 @@ class App extends Component {
         return (
             <div className="App">
                 <Switch>
-                    <Route exact path='/recipes/new' component={Recipe}/>
-                    <Route exact path='/recipes/:id/edit' component={Recipe}/>
-                    <Route exact path='/recipes/:id' component={Recipe}/>
-                    <Route exact path='/' component={Recipes}/>
+                    <Route exact path='/recipes/new' component={RecipeContainer}/>
+                    <Route exact path='/recipes/:id/edit' component={RecipeContainer}/>
+                    <Route exact path='/recipes/:id' component={RecipeContainer}/>
+                    <Route exact path='/' component={RecipesContainer}/>
                 </Switch>
             </div>
         );

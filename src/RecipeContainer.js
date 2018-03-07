@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import './Recipe.css';
 import EditRecipe from './EditRecipe';
 import Firebase from 'firebase';
 import 'firebase/firestore'
 
-class Recipe extends Component {
+class RecipeContainer extends Component {
 
     updateTitle = (title) => {
         this.setState({name: title});
@@ -49,7 +48,10 @@ class Recipe extends Component {
                 </div>
             )
         }
+        else {
+            return <div>WTF</div>
+        }
     }
 }
 
-export default Recipe;
+export default RecipeContainer;

@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import {Header, Image, Input, Button} from 'semantic-ui-react'
 
 const EditRecipe = (props) => {
+    console.log("Rendring EditRecipe")
     return (
         <div className="Recipes">
             <Header className="App-header" inverted as='h1'>
