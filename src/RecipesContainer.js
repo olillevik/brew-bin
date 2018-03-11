@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Recipes from './Recipes';
-import Firebase from 'firebase';
-import 'firebase/firestore'
+import fire from './firebase';
 
 class RecipeContainer extends Component {
 
@@ -12,7 +11,7 @@ class RecipeContainer extends Component {
     }
 
     fetchMyRecipes = () => {
-        Firebase.firestore().collection("recipes")
+        fire.store().collection("recipes")
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -23,7 +22,7 @@ class RecipeContainer extends Component {
             .catch(function(error) {
                 console.log("Error getting documents: ", error);
             });
-    }
+    };
 
     render() {
         return <Recipes recipes={this.state.recipes} />
