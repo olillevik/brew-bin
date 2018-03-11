@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EditRecipe from './EditRecipe';
+import Recipe from './Recipe';
 import Firebase from 'firebase';
 import 'firebase/firestore'
 
@@ -42,9 +43,10 @@ class RecipeContainer extends Component {
             )
         }
         else if (this.props.match.path === "/recipes/:id") {
+            // Fetch recipe and send to child
             return (
                 <div className="Recipe">
-                    <h1>View recipe</h1>
+                    <Recipe name={this.props.match.params.id}/>
                 </div>
             )
         }
