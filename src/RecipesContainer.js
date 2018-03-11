@@ -13,8 +13,8 @@ class RecipeContainer extends Component {
     fetchMyRecipes = () => {
         fire.store().collection("recipes")
             .get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+            .then((answer) => {
+                answer.forEach((doc) => {
                     this.setState({recipes: [...this.state.recipes, {id: doc.id, name: doc.data().name}]});
                     console.log("State updated: " + JSON.stringify(this.state.recipes));
                 });
