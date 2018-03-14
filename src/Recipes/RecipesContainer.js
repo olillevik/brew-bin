@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Recipes from './Recipes';
-import fire from './firebase';
+import fire from '../firebase';
 
 class RecipeContainer extends Component {
 

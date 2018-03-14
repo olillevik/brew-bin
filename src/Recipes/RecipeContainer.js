@@ -8,7 +8,7 @@ class RecipeContainer extends Component {
 
     updateTitle = (title) => {
         this.setState({name: title});
-    }
+    };
 
     saveTitle = () => {
         Firebase.firestore().collection("recipes")
@@ -23,11 +23,12 @@ class RecipeContainer extends Component {
             .catch(function (error) {
                 console.error("Error adding document: ", error);
             });
-    }
+    };
 
     render() {
         return this.renderViewEditOrNew();
     }
+
 
     renderViewEditOrNew = () => {
         if (this.props.match.path === "/recipes/new") {
@@ -37,17 +38,13 @@ class RecipeContainer extends Component {
         }
         else if (this.props.match.path === "/recipes/:id/edit") {
             return (
-                <div className="Recipe">
                     <h1>Edit recipe</h1>
-                </div>
             )
         }
         else if (this.props.match.path === "/recipes/:id") {
             // Fetch recipe and send to child
             return (
-                <div className="Recipe">
-                    <Recipe name={this.props.match.params.id}/>
-                </div>
+                <Recipe name={this.props.match.params.id}/>
             )
         }
         else {

@@ -1,10 +1,10 @@
 import React from 'react';
 import './Recipes.css';
-import logo from './logo.svg';
-import {Header, Image, Input, Button} from 'semantic-ui-react'
+import logo from '../logo.svg';
+import {Button, Header, Image, Input} from 'semantic-ui-react'
 
 const EditRecipe = (props) => {
-    console.log("Rendring EditRecipe")
+    console.log("Rendring EditRecipe");
     return (
         <div className="Recipes">
             <Header className="App-header" inverted as='h1'>
@@ -15,6 +15,6 @@ const EditRecipe = (props) => {
             <Button key='save' onClick={() => props.saveTitle()}>Save</Button>
         </div>
     );
-}
+};
 
 export default EditRecipe;

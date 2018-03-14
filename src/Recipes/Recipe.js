@@ -1,10 +1,10 @@
 import React from 'react';
 import './Recipe.css';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import {Header, Image} from 'semantic-ui-react'
+import withLogging from "../withLogging";
 
 const Recipe = (props) => {
-        console.log(props);
     return (
         <div className="Recipes">
             <Header className="App-header" inverted as='h1'>
@@ -13,6 +13,6 @@ const Recipe = (props) => {
             </Header>
         </div>
     );
-}
+};
 
-export default Recipe;
+export default withLogging(Recipe);

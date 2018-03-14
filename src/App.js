@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import RecipeContainer from './RecipeContainer';
-import RecipesContainer from './RecipesContainer';
+import RecipeContainer from './Recipes/RecipeContainer';
+import RecipesContainer from './Recipes/RecipesContainer';
 
 
 class App extends Component {

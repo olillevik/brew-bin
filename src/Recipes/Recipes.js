@@ -1,7 +1,8 @@
 import React from 'react';
 import './Recipes.css';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import {Header, Image, List} from 'semantic-ui-react'
+import withLogging from "../withLogging";
 
 const Recipes = (props) => {
     return (
@@ -15,6 +16,6 @@ const Recipes = (props) => {
             </List>
         </div>
     );
-}
+};
 
-export default Recipes;
+export default withLogging(Recipes);
