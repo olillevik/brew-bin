@@ -4,7 +4,11 @@ export default function withLogging(WrappedComponent) {
     return class extends React.Component {
         constructor(props) {
             super(props);
-            console.log('props: ', this.props);
+            console.log(WrappedComponent.name + ' props: ', this.props);
+        }
+
+        componentDidUpdate() {
+            console.log(WrappedComponent.name + ' state: ', this.props);
         }
 
         render() {

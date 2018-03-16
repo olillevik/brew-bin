@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Recipes from './Recipes';
 import fire from '../firebase';
 
-class RecipeContainer extends Component {
+class RecipesContainer extends Component {
 
     constructor(props) {
         super(props);
@@ -29,4 +29,4 @@ class RecipeContainer extends Component {
     }
 }
 
-export default RecipeContainer;
+export default RecipesContainer;
