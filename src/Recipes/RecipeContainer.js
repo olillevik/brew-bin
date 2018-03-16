@@ -9,6 +9,7 @@ import withLogging from '../withLogging';
 class RecipeContainer extends Component {
 
     updateTitle = title => this.setState({name: title});
+
     saveTitle = () =>
         Firebase.firestore().collection("recipes")
             .add({
@@ -18,12 +19,14 @@ class RecipeContainer extends Component {
             })
             .then(docRef => console.log("Document written with ID: ", docRef.id))
             .catch(error => console.error("Error adding document: ", error));
+
     fetch = docId =>
         fire.store().collection("recipes")
             .doc(docId)
             .get()
             .then(doc => doc.exists ? this.setState({recipe: doc.data()}) : console.log("No document found for id " + docId))
             .catch(error => console.log("Error getting documents: ", error));
+
     renderViewEditOrNew = () => {
         if (this.props.match.path === "/recipes/new") {
             return <EditRecipe updateTitle={this.updateTitle} saveTitle={this.saveTitle}/>

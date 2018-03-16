@@ -4,15 +4,12 @@ import logo from '../logo.svg';
 import {Header, Image} from 'semantic-ui-react'
 import withLogging from "../withLogging";
 
-const Recipe = (props) => {
-    return (
-        <div className="Recipes">
-            <Header className="App-header" inverted as='h1'>
-                <Image src={logo} className="App-logo" alt="logo"/>
-                {props.name}
-            </Header>
-        </div>
-    );
-};
+const Recipe = props =>
+    <div className="Recipes">
+        <Header className="App-header" inverted as='h1'>
+            <Image src={logo} className="App-logo" alt="logo"/>
+            {props.name}
+        </Header>
+    </div>;
 
 export default withLogging(Recipe);
