@@ -9,29 +9,37 @@ import withLogging from '../withLogging';
 class RecipeContainer extends Component {
 
     updateState = title => {
-        let recipe = this.state.recipe;
-        recipe.name = title;
-        this.setState(recipe);
+        this.setState({recipe: {...this.state.recipe, name: title}});
     };
     addToStore = () =>
         Firebase.firestore().collection("recipes")
             .add({
-                // send in recipe instead
-                name: this.state.name,
-                description: "No description",
+                ...this.state.recipe,
                 author_id: Firebase.auth().currentUser.uid
             })
             .then(docRef => console.log("Document written with ID: ", docRef.id))
             .catch(error => console.error("Error adding document: ", error));
     updateStore = () =>
-        Firebase.firestore().collection("recipes").doc(this.state.docId)
+        Firebase.firestore().collection("recipes").doc(this.props.match.params.id)
             .update({
-                // send in recipe instead
-                name: this.state.name,
-                description: "No description",
+                ...this.state.recipe
             })
-            .then(docRef => console.log("Updated document with with ID: ", docRef.id))
+            .then(() => console.log("Updated document"))
             .catch(error => console.error("Error adding document: ", error));
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            recipe: {
+                name: "",
+                description: "",
+                author_id: ""
+            }
+        };
+        if (this.props.match.params.id) {
+            this.fetchAndSetState(this.props.match.params.id);
+        }
+    }
     fetchAndSetState = docId =>
         fire.store().collection("recipes")
             .doc(docId)
@@ -52,21 +60,6 @@ class RecipeContainer extends Component {
             return <div>WTF</div>
         }
     };
-
-    constructor(props) {
-        super(props);
-        if (this.props.match.params.id) {
-            this.state = {
-                recipe: {
-                    name: "",
-                    description: "",
-                    author_id: ""
-                },
-                docId: this.props.match.params.id
-            };
-            this.fetchAndSetState(this.props.match.params.id);
-        }
-    }
 
     render() {
         return this.renderViewEditOrNew();

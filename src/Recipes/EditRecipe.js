@@ -10,7 +10,9 @@ const EditRecipe = props =>
                 <Image src={logo} className="App-logo" alt="logo"/>
                 Artisinal recipes
             </Header>
-            <Input key='title' value={props.recipe.name} onChange={(e) => props.updateState(e.target.value)}/>
+            {props.recipe ? (
+                    <Input key='title' value={props.recipe.name} onChange={(e) => props.updateState(e.target.value)}/>) :
+                <Input key='title' placeholder='recipe name' onChange={(e) => props.updateState(e.target.value)}/>}
             <Button key='save' onClick={() => props.save()}>Save</Button>
         </div>;
 
