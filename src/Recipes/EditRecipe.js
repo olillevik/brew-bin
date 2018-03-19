@@ -10,8 +10,8 @@ const EditRecipe = props =>
                 <Image src={logo} className="App-logo" alt="logo"/>
                 Artisinal recipes
             </Header>
-            <Input key='title' placeholder='Title' onChange={(e) => props.updateTitle(e.target.value)}/>
-            <Button key='save' onClick={() => props.saveTitle()}>Save</Button>
+            <Input key='title' value={props.recipe.name} onChange={(e) => props.updateState(e.target.value)}/>
+            <Button key='save' onClick={() => props.save()}>Save</Button>
         </div>;
 
 export default withLogging(EditRecipe);

@@ -8,7 +8,7 @@ const Recipe = props =>
     <div className="Recipes">
         <Header className="App-header" inverted as='h1'>
             <Image src={logo} className="App-logo" alt="logo"/>
-            {props.name}
+            {props.recipe.name}
         </Header>
     </div>;
 
