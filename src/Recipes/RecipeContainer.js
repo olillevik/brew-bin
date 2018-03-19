@@ -26,20 +26,6 @@ class RecipeContainer extends Component {
             })
             .then(() => console.log("Updated document"))
             .catch(error => console.error("Error adding document: ", error));
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipe: {
-                name: "",
-                description: "",
-                author_id: ""
-            }
-        };
-        if (this.props.match.params.id) {
-            this.fetchAndSetState(this.props.match.params.id);
-        }
-    }
     fetchAndSetState = docId =>
         fire.store().collection("recipes")
             .doc(docId)
@@ -60,6 +46,20 @@ class RecipeContainer extends Component {
             return <div>WTF</div>
         }
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            recipe: {
+                name: "",
+                description: "",
+                author_id: ""
+            }
+        };
+        if (this.props.match.params.id) {
+            this.fetchAndSetState(this.props.match.params.id);
+        }
+    }
 
     render() {
         return this.renderViewEditOrNew();
