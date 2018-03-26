@@ -6,10 +6,7 @@ import withLogging from '../withLogging';
 
 class RecipeContainer extends Component {
 
-    updateState = (field, value) => {
-        console.log(`Updating state: ${field}:${value}`);
-        this.setState({recipe: {...this.state.recipe, [field]: value}});
-    };
+    updateState = (field, value) => this.setState({recipe: {...this.state.recipe, [field]: value}});
 
     addToStore = () =>
         fire.store().collection("recipes")
