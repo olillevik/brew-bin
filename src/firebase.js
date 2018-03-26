@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase, {default as Firebase} from "firebase";
 import 'firebase/firestore'
 
 const config = {
@@ -24,6 +24,7 @@ const fire = {
             }
         });
     },
+    user: () => Firebase.auth().currentUser.uid,
     store: () => firebase.firestore()
 };
 

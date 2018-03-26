@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import EditRecipe from './EditRecipe';
 import Recipe from './Recipe';
-import Firebase from 'firebase';
-import 'firebase/firestore'
 import fire from "../firebase";
 import withLogging from '../withLogging';
 
@@ -14,16 +12,16 @@ class RecipeContainer extends Component {
     };
 
     addToStore = () =>
-        Firebase.firestore().collection("recipes")
+        fire.store().collection("recipes")
             .add({
                 ...this.state.recipe,
-                author_id: Firebase.auth().currentUser.uid
+                author_id: fire.user()
             })
             .then(docRef => console.log("Document written with ID: ", docRef.id))
             .catch(error => console.error("Error adding document: ", error));
 
     updateStore = () =>
-        Firebase.firestore().collection("recipes").doc(this.props.match.params.id)
+        fire.store().collection("recipes").doc(this.props.match.params.id)
             .update(this.state.recipe)
             .then(() => console.log("Updated document"))
             .catch(error => console.error("Error adding document: ", error));
