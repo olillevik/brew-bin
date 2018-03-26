@@ -8,9 +8,11 @@ import withLogging from '../withLogging';
 
 class RecipeContainer extends Component {
 
-    updateState = title => {
-        this.setState({recipe: {...this.state.recipe, name: title}});
+    updateState = (field, value) => {
+        console.log(`Updating state: ${field}:${value}`);
+        this.setState({recipe: {...this.state.recipe, [field]: value}});
     };
+
     addToStore = () =>
         Firebase.firestore().collection("recipes")
             .add({
@@ -19,6 +21,7 @@ class RecipeContainer extends Component {
             })
             .then(docRef => console.log("Document written with ID: ", docRef.id))
             .catch(error => console.error("Error adding document: ", error));
+
     updateStore = () =>
         Firebase.firestore().collection("recipes").doc(this.props.match.params.id)
             .update({
@@ -26,12 +29,14 @@ class RecipeContainer extends Component {
             })
             .then(() => console.log("Updated document"))
             .catch(error => console.error("Error adding document: ", error));
+
     fetchAndSetState = docId =>
         fire.store().collection("recipes")
             .doc(docId)
             .get()
             .then(doc => doc.exists ? this.setState({recipe: doc.data()}) : console.log("No document found for id " + docId))
             .catch(error => console.log("Error getting documents: ", error));
+
     renderViewEditOrNew = () => {
         if (this.props.match.path === "/recipes/new") {
             return <EditRecipe updateState={this.updateState} save={this.addToStore}/>

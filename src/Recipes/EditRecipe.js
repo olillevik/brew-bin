@@ -11,8 +11,10 @@ const EditRecipe = props =>
                 Artisinal recipes
             </Header>
             {props.recipe ? (
-                    <Input key='title' value={props.recipe.name} onChange={(e) => props.updateState(e.target.value)}/>) :
-                <Input key='title' placeholder='recipe name' onChange={(e) => props.updateState(e.target.value)}/>}
+                    <Input key='name' value={props.recipe.name}
+                           onChange={(e) => props.updateState("name", e.target.value)}/>) :
+                <Input key='name' placeholder='recipe name'
+                       onChange={(e) => props.updateState("name", e.target.value)}/>}
             <Button key='save' onClick={() => props.save()}>Save</Button>
         </div>;
 
