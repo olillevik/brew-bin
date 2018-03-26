@@ -24,9 +24,7 @@ class RecipeContainer extends Component {
 
     updateStore = () =>
         Firebase.firestore().collection("recipes").doc(this.props.match.params.id)
-            .update({
-                ...this.state.recipe
-            })
+            .update(this.state.recipe)
             .then(() => console.log("Updated document"))
             .catch(error => console.error("Error adding document: ", error));
 
