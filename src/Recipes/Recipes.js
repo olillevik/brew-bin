@@ -1,15 +1,12 @@
 import React from 'react';
 import './Recipes.css';
-import logo from '../logo.svg';
-import {Header, Image, List} from 'semantic-ui-react'
+import Heading from './Heading';
+import {List} from 'semantic-ui-react'
 import withLogging from "../withLogging";
 
 const Recipes = props =>
     <div className="Recipes">
-        <Header className="App-header" inverted as='h1'>
-            <Image src={logo} className="App-logo" alt="logo"/>
-            Artisinal recipes
-        </Header>
+        <Heading/>
         <List link selection>
             {props.recipes.map(r => (<List.Item key={r.id}><a href={'./recipes/' + r.id}>{r.name}</a></List.Item>))}
         </List>
