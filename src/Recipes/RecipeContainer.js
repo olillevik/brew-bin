@@ -32,7 +32,7 @@ class RecipeContainer extends Component {
 
     renderViewEditOrNew = () => {
         if (this.props.match.path === "/recipes/new") {
-            return <EditRecipe updateState={this.updateState} save={this.addToStore}/>
+            return <EditRecipe updateState={this.updateState} save={this.addToStore} recipe={this.state.recipe}/>
         }
         else if (this.props.match.path === "/recipes/:id/edit") {
             return <EditRecipe updateState={this.updateState} save={this.updateStore} recipe={this.state.recipe}/>
@@ -41,7 +41,7 @@ class RecipeContainer extends Component {
             return <Recipe recipe={this.state.recipe}/>
         }
         else {
-            return <div>WTF</div>
+            return <div>Oh my. Something went terribly wrong.</div>
         }
     };
 
