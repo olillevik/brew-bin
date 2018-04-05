@@ -21,8 +21,6 @@ class App extends Component {
                         <Menu.Item onClick={this.toggleVisibility} icon={'content'}/>
                     </Menu.Menu>
                 </Menu>
-                <Header inverted as='h1' textAlign='right'>
-                </Header>
                 <Sidebar.Pushable>
                     <Sidebar.Pusher>
                         <Switch>
@@ -42,13 +40,13 @@ class App extends Component {
                         vertical
 
                     >
-                        <Menu.Item name='home'>
-                            <Icon name='home'/>
-                            Home
+                        <Menu.Item name='settings'>
+                            <Icon name='settings'/>
+                            Settings
                         </Menu.Item>
-                        <Menu.Item name='new recipe'>
-                            <Icon name='add circle'/>
-                            New recipe
+                        <Menu.Item name='log out'>
+                            <Icon name='log out'/>
+                            Log out
                         </Menu.Item>
                     </Sidebar>
 
